@@ -13,10 +13,32 @@ git clone https://github.com/darkscript/JournalApp.git
 ### Technologies used
 
 The app is made with android and targets latest android version (Android 27) and also uses
+
 > Firebase Database
+
 > Firebase Authentication
+
 > Google Oauth
+
 > Sqlite Database
+
+### Functionality
+
+You can do the following in the app;
+
+* Create a Journal Entry
+
+* Easily select a date from calendar
+
+* Edit an old entry
+
+* Delete an entry by swiping left
+
+* Data is synced from and to Firebase Database
+
+* Login using Firebase Auth
+
+* among other functionalities...
 
 ### Prerequisites
 

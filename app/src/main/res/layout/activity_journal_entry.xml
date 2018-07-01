@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".activities.JournalEntryActivity">
+
+    <LinearLayout
+        android:id="@+id/journal_entry"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:contentDescription="@string/app_name"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@mipmap/icon_calendar" />
+        <TextView
+            android:id="@+id/journal_date"
+            android:layout_width="308dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:hint="@string/pick_date"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/diary_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="299dp"
+        android:layout_below="@+id/journal_entry"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="27dp"
+        android:background="@android:drawable/editbox_background"
+        android:gravity="top"
+        android:hint="@string/journal_entry"
+        android:inputType="text|textAutoCorrect|textMultiLine|textLongMessage|textCapSentences"
+        android:singleLine="false"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>

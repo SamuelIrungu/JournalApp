@@ -117,6 +117,30 @@ public class AppCoreActivity extends AppCompatActivity implements
         }
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        TouchSwipeManager touchSwipeManager = new TouchSwipeManager(this, recyclerView) {
+            @Override
+            public void initBehindButton(RecyclerView.ViewHolder viewHolder, List<behindButton> behindButtons) {
+                behindButtons.add(new behindButton(
+                        "Delete",
+                        R.mipmap.cancel,
+                        Color.parseColor("#FF3C30"),
+                        new TouchSwipeManager.UnderlayButtonClickListener() {
+                            @Override
+                            public void onClick(int position) {
+                                databaseHelper.showDebugLog("Deleting");
+                                JournalModel journal = entriesAdapter.getJournal(position);
+                                if (journal != null) {
+                                    if (databaseHelper.deleteJournal(journal)) {
+                                        entriesAdapter.removeAt(position);
+                                        deleteFromFirebase(journal);
+                                    }
+                                }
+                            }
+                        }
+                ));
+            }
+        };
     }
 
     /**
@@ -153,29 +177,7 @@ public class AppCoreActivity extends AppCompatActivity implements
         } else
             findViewById(R.id.nrftv).setVisibility(View.VISIBLE);
 
-        TouchSwipeManager touchSwipeManager = new TouchSwipeManager(this, recyclerView) {
-            @Override
-            public void initBehindButton(RecyclerView.ViewHolder viewHolder, List<behindButton> behindButtons) {
-                behindButtons.add(new behindButton(
-                        "Delete",
-                        R.mipmap.cancel,
-                        Color.parseColor("#FF3C30"),
-                        new TouchSwipeManager.UnderlayButtonClickListener() {
-                            @Override
-                            public void onClick(int position) {
-                                databaseHelper.showDebugLog("Deleting");
-                                JournalModel journal = entriesAdapter.getJournal(position);
-                                if (journal != null) {
-                                    if (databaseHelper.deleteJournal(journal)) {
-                                        entriesAdapter.removeAt(position);
-                                        deleteFromFirebase(journal);
-                                    }
-                                }
-                            }
-                        }
-                ));
-            }
-        };
+
     }
 
     /**
